@@ -1,0 +1,11 @@
+# model weights — download separately from AXERA-TECH on HuggingFace
+*.axmodel
+*.bin
+
+# python
+__pycache__/
+*.pyc
+
+# editor/OS cruft
+.DS_Store
+*.swp
