@@ -29,7 +29,7 @@ def chat(base_url: str, messages: list[dict], stream: bool = False) -> str:
         full = []
         t0 = time.perf_counter()
         first_token_time = None
-        with requests.post(url, json=payload, stream=True, timeout=60) as r:
+        with requests.post(url, json=payload, stream=True, timeout=600) as r:
             r.raise_for_status()
             for line in r.iter_lines(decode_unicode=True):
                 if not line or not line.startswith("data: "):
@@ -55,7 +55,7 @@ def chat(base_url: str, messages: list[dict], stream: bool = False) -> str:
         return text
     else:
         t0 = time.perf_counter()
-        r = requests.post(url, json=payload, timeout=60)
+        r = requests.post(url, json=payload, timeout=600)
         elapsed = time.perf_counter() - t0
         r.raise_for_status()
         result = r.json()
